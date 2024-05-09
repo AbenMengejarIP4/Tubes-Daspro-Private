@@ -41,7 +41,10 @@ def generateId(data_user:list) -> int:
     id = len(data_user) + 1
     return id
 
-def register(data_user:list,data_monster:list,data_inventory_monster:list):
+def register(data_user:list,data_monster:list,data_inventory_monster:list,id_login):
+    if id_login != 0:
+        username = search(data_user,'id',id_login,'username')
+        return print(f'Register gagal!\nAnda telah login dengan username {username}, silahkan lakukan “LOGOUT” sebelum melakukan login kembali.')
     # belum handle login
     username = input('Masukkan username : ')
     password = input('Masukkan password : ')
@@ -78,5 +81,3 @@ def register(data_user:list,data_monster:list,data_inventory_monster:list):
             print("Username hanya boleh berisi alfabet, angka, underscore, dan strip!")
         else:
             print(f'Username {username} sudah terpakai, silahkan gunakan username lain')
-
-register(data_user,data_monster,data_inventory_monster)

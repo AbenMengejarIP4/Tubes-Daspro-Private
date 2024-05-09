@@ -31,13 +31,10 @@ def isPasswordCorrect(username:str,password:str,data_user:list)->bool:
             return True
     return False
 
-def isLogin(id_login) -> bool:
-    if id_login != 0:
-        return True
-    return False
 
-def Login(id_login, data_user):
-    if not isLogin(id_login):
+
+def login(id_login, data_user):
+    if id_login == 0:
         username = input("Masukkan username : ")
         password = input("Masukkan password : ")
     
@@ -49,8 +46,7 @@ def Login(id_login, data_user):
             id_login = search(data_user,'username',username,'id')
             print(f"Selamat datang, Agent {username}!\nMasukkan command “help” untuk daftar command yang dapat kamu panggil.")
     else:
-        username = search
+        username = search(data_user,'id',id_login,'username')
         print(f'Login gagal!\nAnda telah login dengan username {username}, silahkan lakukan “LOGOUT” sebelum melakukan login kembali.')
 
 
-Login(id_login,data_user)
